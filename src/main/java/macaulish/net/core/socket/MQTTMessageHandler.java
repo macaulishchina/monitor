@@ -47,6 +47,7 @@ public class MQTTMessageHandler extends AbstractMessageHandler {
     public void onAcceptMessage(JSONObject message) {
         try {
             logger.info("MQTTMessageHandler accepted the message from " + message.get("IP") + ":" + message.get("port") + ".");
+            logger.info("Message content is '"+message+"'");
             mqttPublishClient.publish(TOPIC_PUBLISH, 1, message);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
